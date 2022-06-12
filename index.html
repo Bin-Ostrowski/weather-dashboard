@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
     
 </head>
@@ -13,37 +14,39 @@
         <h1 class = "header">Weather Dashboard</h1>
     </header>
 
-    <main class = "main-container">
-        <div class = "search-container">
-            <div class = "form-container"> <!-- boarder bottom-->
-                <h1 class = "form-title">Search for a City:</h1>
-                <form>
+    <main class = "container-fluid">
+        <div class ="row">
+            <div class = "search-container col-md-3">
+                <form class = "form-el border-bottom"> 
+                    <h1 class = "form-title">Search for a City:</h1>
+                    <input class="form-input " placeholder="Enter City"></input> <br><br>
+                    <button class="search-btn">Search</button>
                 </form>
-                <button class="search-btn"></button>
-            </div>
-
-            <div class="past-search-container"> <!-- list of buttons which as past search items -->
-                <span class ="past-search-btn">
+           
+                <div class="past-search-container"> <!-- list of buttons which as past search items -->
+                    <button class ="past-search-btn">
                     <!--will generate buttons here in js of past searches-->
-                </span>
+                    </button>
+                </div>
             </div>
-        </div>
+        
+            <div class = "current-search-container col-md-9">
+                <div class = "todays-weather-container">
+                     <h1 class="current-title">HOlder city name (todays date)</h1>
+                 </div>
 
-        <div class = "current-search-container">
-            <div class = "todays-weather-container">
-                <h1 class="current-title"></h1>
-            </div>
-
-            <div class="5-day-forcast-container">
-                <h2 class="5-day-title">5-Day Forcast:</h2>
-                <card class="future-weather-cards">
-                </card>
+                <div class="5-day-forcast-container">
+                    <h2 class="5-day-title">5-Day Forcast:</h2>
+                    <card class="future-weather-card">
+                    
+                
+                    </card>
+                </div>
             </div>
         </div>
     </main>
 
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src = "./assets/js/script.js"></script>
 </body>
 </html>

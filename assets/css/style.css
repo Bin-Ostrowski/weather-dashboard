@@ -1,0 +1,42 @@
+header h1 {
+    background: linear-gradient(to right, #5aa2e9 0%, #000066 100%);
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+
+.form-input {
+    width: 100%;
+}
+.search-btn {
+    border: none;
+    outline: none;
+    background:#5aa2e9;
+    color: white;
+    border-radius: 15px;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.past-search-btn {
+    border: none;
+    outline: none;
+    background:lightgrey;
+    border-radius: 15px;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+
+.todays-weather-container {
+    border: solid 2px;
+}
+
+.future-weather-card{
+    background-color: darkslategrey;
+    padding: 5px;
+}
+
