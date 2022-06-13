@@ -1,6 +1,9 @@
 var cityInputEl = document.querySelector("#city");
 var cityFormEl = document.querySelector(".form-el");
+var searchedBtnContainer = document.querySelector(".past-search-container");
 var today = moment().format('MM/DD/YYYY');
+var tomorrow =moment().add(1, 'days').format('MM/DD/YYYY');
+
 
 
 //fetch for geocode.xyz api to get entered city's lat / long 
@@ -27,16 +30,29 @@ var formSubmitHandler = function(event) {
         cityInputEl.value = "";
 
         //clear current displayed weather
-        //save city to local storage
-        //create button under searched cities
 
+        //save city to local storage
+        localStorage.setItem("city", cityName)
+        
+        // reteive from local storage and create button under searched cities
+
+        var createPastBtn = function () { 
+            
+            var pastSearchedCity = document.createElement("button");
+            pastSearchedCity.classList.add("past-search-btn");
+            pastSearchedCity.textContent = localStorage.getItem("city");
+            console.log(pastSearchedCity);
+
+            searchedBtnContainer.appendChild(pastSearchedCity);
+        }
+        createPastBtn();
     } else {
         alert("Please enter a city.");
     };
 };
 
 //fetch for OpenWeather api for city / current weather conditions
-//http://api.openweathermap.org/data/2.5/weather?q=London - change to this.
+//http://api.openweathermap.org/data/2.5/weather?q=" + cityName  - change to this.
 var getCurrentWeather = function (data) {
     //format openWeather api url
     var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + data.latt + "&lon=" + data.longt + "&exclude=minutely,hourly,alerts&units=imperial&&appid=4eb3f3ce5a058a8056f9cb0c3b28f9ea"
@@ -82,32 +98,35 @@ var displayCurrentWeather = function (data) {
     uvIndex.textContent=("UV Index: " + data.current.uvi);
     
     //with color for favorable, moderate, or severe. - 
-        //if loop
+        if (data.current.uvi < 3) {
+            uvIndex.className="low-uvIndex";
+            console.log ("low")
+        } else if (data.current.uvi < 6) {
+            uvIndex.className="moderate-uvIndex";
+        }else {
+            uvIndex.className="high-uvIndex";
+        } 
 };
 
 var displayForcast = function(data) {
-    console.log(data.daily);
     //create for loop to run though each array, grab card info and display it. 
-    // var dailyForcast = data.daily;
+    var forcast = data.daily; 
     // console.log(dailyForcast);
-    //  for (i = 0; i < forcast[5]; i++) {
-    //     console.log("text");
-    // }; 
+     for (i = 0; i < forcast.length; i++) {
+        console.log([i]);
+    }; 
 };
 
-//fetch for 1 day forcase of same city
+//5 day forcast
     //display date
     // an icon representation of weather conditions, 
     //the temperature, 
     //the wind speed,
     //the humidity, 
-    
 
-//then duplicate function for 2 days, 3 days, 4 days, 5 days. = 5-day future forcast
 
-//save searched city in localStorage
-//retreive past city from local storage 
-//display as button under past searched cities.
 
 //activate search buton
+
 cityFormEl.addEventListener("submit", formSubmitHandler);
+

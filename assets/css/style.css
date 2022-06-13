@@ -5,6 +5,12 @@ header h1 {
     padding: 10px;
 }
 
+.form-el {
+    border-bottom: 20px, darkgrey;
+    margin: 10px;
+    width: 100%;
+}
+
 .form-input {
     width: 100%;
 }
@@ -28,11 +34,13 @@ header h1 {
     padding: 10px;
     text-align: center;
     width: 100%;
+    margin-bottom: 10px;
 }
 
 
 .todays-weather-container {
     border: solid 2px;
+    padding: 10px;
 }
 
 .future-weather-card{
@@ -40,3 +48,15 @@ header h1 {
     padding: 5px;
 }
 
+.low-uvIndex {
+    background-color: green;
+    color: white;
+}
+
+.moderate-uvIndex {
+    background-color:yellow;
+}
+
+.high-uvIndex {
+    background-color: red;
+}
