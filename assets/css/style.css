@@ -43,14 +43,20 @@ header h1 {
     padding: 10px;
 }
 
-.future-weather-card{
-    background-color: darkslategrey;
-    padding: 5px;
+.forcast-card{
+    background-color: darkblue;
+    margin: 10px;
 }
+.forcast-font {
+    color: white;
+}
+    
 
 .low-uvIndex {
     background-color: green;
     color: white;
+    width: fit-content;
+    padding: 5px;
 }
 
 .moderate-uvIndex {

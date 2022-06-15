@@ -23,7 +23,7 @@
                     <button type="submit" class="search-btn">Search</button>
                 </form>
            
-                <div class="past-search-container"> <!-- list of buttons which as past search items -->
+                <div class="past-search-container" id="pastBtnsEl"> <!-- list of buttons which as past search items -->
                     
                 </div>
             </div>
@@ -31,22 +31,15 @@
             <div class = "current-search-container col-md-9">
                 <div class = "todays-weather-container">
                     <h1 class="current-title"><span id="city-search-term"></span></h1>
-                    <span id="icon"></span>
-                    <span id="temp"></span> <br>
-                    <span id="wind"></span><br>
-                    <span id="humidity"></span><br>
-                    <span id="uv-index"></span>
+                    <div id="icon"></div>
+                    <p id="temp"></p>
+                    <p id="wind"></p>
+                    <p id="humidity"></p>
+                    <p id="uv-index"></p>
                 </div>
 
-                <div class="5-day-forcast-container">
-                    <h2 class="5-day-title">5-Day Forcast:</h2>
-                    <card class="future-weather-card">
-                        <h2 class="forcast-date"><span id="forcast-date"></span></h1>
-                        <span id="forcast-icon"></span>
-                        <span id="forcast-temp"></span> <br>
-                        <span id="forcast-wind"></span><br>
-                        <span id="forcast-humidity"></span><br>
-                    </card>
+                <div id="forcast">
+                   
                 </div>
 
             </div>
