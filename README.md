@@ -1,11 +1,10 @@
 # Weather Dashboard
-# Daily Calendar
 
 Created by: Robin Ostrowski
 
 On: 6/15/2022
 
-This webpage will generate the current weather and a 5-day forcast for the searched city. It will also save past searched citys to allow user to easily review it's forcasted weather.
+This webpage will generate the current weather and a 5-day forcast for the searched city. It will also save prior searched citys to allow user to easily review it's forcasted weather.
 
 **Link to live URL**
 
