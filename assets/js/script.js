@@ -9,8 +9,9 @@ var newApiKey = apiKey;
 
 //fetch for geocode.xyz api to get entered city's lat / long 
 var getCityLongLatt = function (cityName) {
-    var apiUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=5" + newApiKey;
-    //make reqyest to the url
+    var apiUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=5" + newApiKey;
+        // var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" +cityName + newApiKey;  
+//     //make reqyest to the url
     fetch(apiUrl).then(function(response) {
         return response.json()
     }).then(function(data) {
