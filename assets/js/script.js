@@ -1,4 +1,5 @@
 var cityInputEl = document.querySelector("#city");
+
 var cityFormEl = document.querySelector(".form-el");
 var searchedBtnContainer = document.querySelector(".past-search-container");
 var pastBtnsEl = document.querySelector("#pastBtnsEl");
@@ -28,32 +29,37 @@ var formSubmitHandler = function(event) {
     
     if (cityName) {
         getCityLongLatt(cityName);
+        saveCityName(cityName);
         cityInputEl.value = "";
 
         //clear current displayed weather
-
-        //save city to local storage
-        localStorage.setItem("city", cityName)
-        
-        // reteive from local storage and create button under searched cities
-
-        var createPastBtn = function () { 
-            
-            var pastSearchedCity = document.createElement("button");
-            pastSearchedCity.classList.add("past-search-btn");
-            
-            pastSearchedCity.textContent = localStorage.getItem("city");
-            // pastSearchedCity.setAttribute([]);
-            // pastSearchedCity.setAttribute("data-" + cityName);  
-            console.log(pastSearchedCity);
-
-            searchedBtnContainer.appendChild(pastSearchedCity);
-        }
-        createPastBtn();
+        saveCityName(cityName)
     } else {
         alert("Please enter a city.");
     };
 };
+
+var saveCityName = function (cityName) {
+  //save city to local storage
+  localStorage.setItem("city", cityName)  
+  
+};
+
+var createPastBtn = function () { 
+            
+    var pastSearchedCityBtn = document.createElement("button");
+    pastSearchedCityBtn.classList.add("past-search-btn");
+
+     // reteive from local storage and create button under searched cities
+    pastSearchedCityBtn.textContent = localStorage.getItem("city");
+    // pastSearchedCity.setAttribute([]);
+    // pastSearchedCity.setAttribute("data-" + cityName);  
+    console.log(pastSearchedCityBtn);
+
+    searchedBtnContainer.appendChild(pastSearchedCityBtn);
+}
+createPastBtn();
+
 
 //fetch for OpenWeather api for city / current weather conditions
 var getCurrentWeather = function (data) {
@@ -84,7 +90,6 @@ var displayCurrentWeather = function (data) {
 
     //display an icon of weather conditions, 
     var iconCode = data.current.weather[0].icon;
-    console.log(iconCode)
     var iconUrl = "http://openweathermap.org/img/wn/"+ iconCode + "@2x.png";
     var icon = document.querySelector("#icon");
     icon.innerHTML = ("<img src=" + iconUrl + ">");
