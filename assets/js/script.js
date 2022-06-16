@@ -1,12 +1,10 @@
 var cityInputEl = document.querySelector("#city");
-
 var cityFormEl = document.querySelector(".form-el");
 var searchedBtnContainer = document.querySelector(".past-search-container");
 var pastBtnsEl = document.querySelector("#pastBtnsEl");
 var today = moment().format('MM/DD/YYYY');
-var tomorrow =moment().add(1, 'days').format('MM/DD/YYYY');
+var tomorrow = moment().add(1, 'days').format('MM/DD/YYYY');
 var apiKey = '4eb3f3ce5a058a8056f9cb0c3b28f9ea';
-
 
 //fetch for geocode.xyz api to get entered city's lat / long 
 var getCityLongLatt = function (cityName) {
@@ -39,21 +37,18 @@ var formSubmitHandler = function(event) {
     };
 };
 
+//save city to local storage
 var saveCityName = function (cityName) {
-  //save city to local storage
   localStorage.setItem("city", cityName)  
-  
 };
 
+  // reteive from local storage and create button under searched cities
 var createPastBtn = function () { 
             
     var pastSearchedCityBtn = document.createElement("button");
     pastSearchedCityBtn.classList.add("past-search-btn");
-
-     // reteive from local storage and create button under searched cities
+   
     pastSearchedCityBtn.textContent = localStorage.getItem("city");
-    // pastSearchedCity.setAttribute([]);
-    // pastSearchedCity.setAttribute("data-" + cityName);  
     console.log(pastSearchedCityBtn);
 
     searchedBtnContainer.appendChild(pastSearchedCityBtn);
@@ -64,7 +59,7 @@ createPastBtn();
 //fetch for OpenWeather api for city / current weather conditions
 var getCurrentWeather = function (data) {
     //format openWeather api url
-    var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + data.lat + "&lon=" + data.lon + "&exclude=minutely,hourly,alerts&units=imperial&&appid=4eb3f3ce5a058a8056f9cb0c3b28f9ea"
+    var apiUrl = "https://api.openweathermap.org/data/2.5/onecall?lat=" + data.lat + "&lon=" + data.lon + "&exclude=minutely,hourly,alerts&units=imperial&&appid=4eb3f3ce5a058a8056f9cb0c3b28f9ea";
 
     //make requst to the url 
     fetch(apiUrl)
@@ -79,7 +74,7 @@ var getCurrentWeather = function (data) {
 
 //display city name
 var displayCityName = function (data) {
-    var currentCity = document.querySelector("#city-search-term")
+    var currentCity = document.querySelector("#city-search-term");
     //display current date
     currentCity.textContent = data.name + " " + today;
 };
@@ -117,16 +112,16 @@ var displayCurrentWeather = function (data) {
             uvIndex.className="moderate-uvIndex";
         }else {
             uvIndex.className="high-uvIndex";
-        } 
+        };
 };
 
 //create 5 day forcast container
 var displayForcast = function(data) {
-    var h2 = document.createElement('h2')
+    var h2 = document.createElement('h2');
     h2.textContent = '5 Day Forecast';
     
     var forcastContainer = document.createElement('div');
-    forcastContainer.setAttribute('class', 'row')
+    forcastContainer.setAttribute('class', 'row');
 
     //create for loop to run though each array, grab card info and display it. 
    for (i = 1; i < 6; i++) {
@@ -139,7 +134,7 @@ var displayForcast = function(data) {
 
        //display date
        var  title = document.createElement('h4');
-       title.textContent = new Date(data.daily[i].dt*1000); //.getDate();
+       title.textContent = new Date(data.daily[i].dt*1000); //.getDate(); ?????
        title.setAttribute('class', 'forcast-font');
 
        //display icon = 
@@ -163,6 +158,7 @@ var displayForcast = function(data) {
        humidity.textContent=("Humidity: " + data.daily[i].humidity + " %");
        humidity.setAttribute('class', 'forcast-font');
        
+       //append all created Elements to siblings/parents
        col.append(colBody);
 
        colBody.append(title);
@@ -177,7 +173,7 @@ var displayForcast = function(data) {
 }; 
 
 //activate past searched btn
-// pastBtnsEl.addEventListener("click", formSubmitHandler);
+// pastBtnsEl.addEventListener("click", formSubmitHandler());
 
 //activate search buton
 cityFormEl.addEventListener("submit", formSubmitHandler);
