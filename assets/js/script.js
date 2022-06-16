@@ -5,10 +5,11 @@ var pastBtnsEl = document.querySelector("#pastBtnsEl");
 var today = moment().format('MM/DD/YYYY');
 var tomorrow = moment().add(1, 'days').format('MM/DD/YYYY');
 var apiKey = '&appid=4eb3f3ce5a058a8056f9cb0c3b28f9ea';
+var newApiKey = apiKey;
 
 //fetch for geocode.xyz api to get entered city's lat / long 
 var getCityLongLatt = function (cityName) {
-    var apiUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=5" + apiKey;
+    var apiUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + cityName + "&limit=5" + newApiKey;
     //make reqyest to the url
     fetch(apiUrl).then(function(response) {
         return response.json()
